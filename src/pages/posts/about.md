@@ -1,5 +1,5 @@
 ---
-title: Home
+title: About us
 layout: "../about.astro"
 img-logo: "../../../public/logoLeah.png"
 ---

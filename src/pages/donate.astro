@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-;
+const {frontmatter} = Astro.props
 ---
 
-<Layout title="donate">
-
+<Layout title={frontmatter.title}>
+<slot></slot>
 </Layout>
