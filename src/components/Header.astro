@@ -5,19 +5,22 @@ const links = headerData.links;
 ---
 
 <script>
-  import { initApp } from "./Theme.astro";
+  import { BurguerMenu } from "./BurguerMenu.astro";
 
-  document.addEventListener("DOMContentLoaded", initApp);
+  import { Theme } from "./Theme.astro";
+  document.addEventListener("DOMContentLoaded", Theme);
+  document.addEventListener("DOMContentLoaded", BurguerMenu);
 </script>
 
 <header class="sticky top-0 z-20 dark:bg-black bg-white shadow-lg">
   <div
-    class="flex w-full text-sm lg:text-lg lg:w-5/6 lg:px-0  mx-auto items-center justify-between py-7 px-6 "
+    class="flex w-full text-sm lg:text-lg lg:w-5/6 lg:px-0 mx-auto items-center justify-between py-7 px-6"
   >
     <div class="block md:hidden">
-      <a href="/"><img src="../../public/LogoSchool.png" class="h-14 w-14"></a>
+      <a href="/"><img src="../../public/LogoSchool.png" class="h-14 w-14" /></a
+      >
     </div>
-    <div >
+    <div>
       <button
         id="hamburger-button"
         class="relative h-8 w-8 cursor-pointer text-3xl md:hidden"
@@ -29,8 +32,13 @@ const links = headerData.links;
         </div>
       </button>
 
-      <nav class="hidden flex items-center space-x-8 md:inline font-bold font-heading " aria-label="main">
-        <a  href="/"><img  src="../../public/LogoSchool.png" class=" inline h-14 w-14"></a>
+      <nav
+        class="hidden flex items-center space-x-8 md:inline font-bold font-heading"
+        aria-label="main"
+      >
+        <a href="/"
+          ><img src="../../public/LogoSchool.png" class="inline h-14 w-14" /></a
+        >
         {links.map((link) => <a href={link.link}>{link.text}</a>)}
       </nav>
     </div>
@@ -60,7 +68,5 @@ const links = headerData.links;
         ))
       }
     </nav>
-
   </div>
-
 </header>
