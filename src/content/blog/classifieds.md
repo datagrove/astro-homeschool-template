@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/ClassifiedsLayout.astro"
 title: Classifieds
 Image: qsy
 ---

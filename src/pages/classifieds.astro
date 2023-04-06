@@ -1,14 +1,12 @@
 ---
-import Layout from "./Layout.astro";
-import { getCollection } from "astro:content";
-const { frontmatter } = Astro.props;
-console.log(1);
-const allposts = await getCollection("blog");
+import { getEntryBySlug } from "astro:content";
+import Layout from "../layouts/Layout.astro";
 
-console.log(allposts, frontmatter);
+const classifieds = await getEntryBySlug("blog", "classifieds");
+const { Content } = await classifieds.render();
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={classifieds.data.title}>
   <div
     class="lg:max-w-2xl max-w-xl mb-10 text-center md:mb-12 md:mx-auto md:text-center lg:py-20 py-16"
   >
@@ -25,7 +23,7 @@ console.log(allposts, frontmatter);
     <div
       class="grid md:grid-cols-2 gap-14 -mb-6 lg:grid-cols-3 row-gap-6 [&>div] [&>div]:mb-6 [&>>p>img]:max-w-lg [&>div>p>img]:max-w-sm [&>div>p>img]:rounded-md"
     >
-      <slot />
+      <Content />
     </div>
   </div>
 </Layout>

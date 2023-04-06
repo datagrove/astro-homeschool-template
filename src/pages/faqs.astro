@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getEntryBySlug } from "astro:content";
+
 const faqsPost = await getEntryBySlug("blog", "faqs");
 console.log(faqsPost.data.title);
+const { Content } = await faqsPost.render();
 ---
 
 <Layout title={faqsPost.data.title}>
@@ -26,7 +28,7 @@ console.log(faqsPost.data.title);
         <div
           class="grid md:grid-cols-2 gap-x-8 gap-y-8 grid-cols-1 lg:gap-x-16 [&>div]:space-y-8 [&>div>h3]:text-2xl [&>div>h3]:mb-4 [&>div>h3]:text-center font-heading [&>div>h3]:py-4"
         >
-          <slot>default</slot>
+          <Content />
         </div>
       </div>
     </div>
