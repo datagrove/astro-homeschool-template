@@ -2,7 +2,7 @@
 import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-const classifieds = await getEntryBySlug("blog", "classifieds");
+const classifieds = await getEntryBySlug("pagesMD", "classifieds");
 const { Content } = await classifieds.render();
 ---
 

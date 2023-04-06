@@ -1,11 +1,8 @@
 ---
 import Layout from "./Layout.astro";
-import { getCollection } from "astro:content";
+
 const { frontmatter } = Astro.props;
 console.log(1);
-const allposts = await getCollection("blog");
-
-console.log(allposts, frontmatter);
 ---
 
 <Layout title={frontmatter.title}>
@@ -25,7 +22,6 @@ console.log(allposts, frontmatter);
     <div
       class="grid md:grid-cols-2 gap-14 -mb-6 lg:grid-cols-3 row-gap-6 [&>div] [&>div]:mb-6 [&>>p>img]:max-w-lg [&>div>p>img]:max-w-sm [&>div>p>img]:rounded-md"
     >
-      <slot />
     </div>
   </div>
 </Layout>

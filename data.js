@@ -1,11 +1,3 @@
-// import { getPermalink, getBlogPermalink, getAsset } from "./utils/permalinks";
-import { getCollection, getEntryBySlug } from "astro:content";
-const allposts = await getCollection("blog");
-let mdPosts = allposts.map((post) => ({
-  text: `${post.data.title}`,
-  link: `${post.id}`,
-}));
-
 export const headerData = {
   links: [
     {
@@ -18,7 +10,7 @@ export const headerData = {
     },
     {
       text: "About Us",
-      link: "/src/content/blog/about.md",
+      link: "/about",
     },
     {
       text: "FAQS",
