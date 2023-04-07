@@ -1,9 +1,17 @@
 ---
+import { getCollection, getEntryBySlug } from "astro:content";
 import Layout from "./Layout.astro";
-const { frontmatter } = Astro.props;
+
+
+const classifieds2 = await getEntryBySlug("classifieds","classified1")
+
+const {Content} = await classifieds2.render()
+
+
+
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title="Classifieds">
   <div
     class="lg:max-w-2xl max-w-xl mb-10 text-center md:mb-12 md:mx-auto md:text-center lg:py-20 py-16"
   >
@@ -20,7 +28,7 @@ const { frontmatter } = Astro.props;
     <div
       class="grid md:grid-cols-2 gap-14 -mb-6 lg:grid-cols-3 row-gap-6 [&>div] [&>div]:mb-6 [&>>p>img]:max-w-lg [&>div>p>img]:max-w-sm [&>div>p>img]:rounded-md"
     >
-      <slot />
+     {Content}
     </div>
   </div>
 </Layout>
