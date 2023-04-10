@@ -20,7 +20,7 @@ export const headerData = {
     },
     {
       text: "Classifieds",
-      link: "/posts/classifieds/",
+      link: "/classifieds/",
     },
   ],
 };
