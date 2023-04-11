@@ -3,7 +3,7 @@ import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 export async function getStaticPaths() {
-  const pages = await getCollection("classifieds");
+  const pages = await getCollection("business");
 
   return pages.map((page) => ({
     params: { slug: page.slug },
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   }));
 }
 interface Props {
-  page: CollectionEntry<"classifieds">;
+  page: CollectionEntry<"business">;
 }
 
 const { page } = Astro.props;

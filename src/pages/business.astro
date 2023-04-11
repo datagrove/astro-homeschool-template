@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+const Businesses = await getCollection("business");
+---
+
+<Layout title="Businnes">
+  <div
+    class="lg:max-w-6xl max-w-4xl mb-10 font-bold font-heading text-center md:mb-12 md:mx-auto md:text-center"
+  >
+    <div class="lg:py-20 py-16">
+      <h1 class="font-bold font-heading text-5xl pb-20">Businesses</h1>
+
+      <!-- <div class="flex flex-row pt-12 pb-6 contet">
+        <h2 class="text-xl">Categories:</h2>
+        <div class="flex flex-row px-6 gap-8 justify-between">
+          <a href="">Construction</a>
+          <a href=""></a>
+          <a href="">qsy</a>
+        </div>
+      </div> -->
+      <div
+        class="grid md:grid-cols-2 lg:gap-x-40 gap-x-20 gap-y-12 grid-cols-1 mx-4"
+      >
+        {
+          Businesses.map((business) => (
+            <div class="md:w-full w-10/12 mx-auto border-2 p-4 ">
+              <div class=" w-full flex flex-row justify-between pt-4 px-3">
+                <a href={`business/${business.slug}`}>{business.data.title}</a>
+
+                <h2>{business.data.Category}</h2>
+              </div>
+              <div class="w-11/12 py-7 mx-auto">
+                <Image
+                  src={business.data.Image}
+                  alt={"free image"}
+                  width={500}
+                  height={300}
+                  class="mx-auto bg-gray-500 rounded-lg shadow-lg hover:rounded-2xl"
+                />
+              </div>
+
+              <p class="">{business.data.Preview}</p>
+            </div>
+          ))
+        }
+        <h1></h1>
+      </div>
+    </div>
+  </div>
+</Layout>
