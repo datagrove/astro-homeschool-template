@@ -2,15 +2,17 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
-const Businesses = await getCollection("business");
+const Businesses = await getCollection("bussiness");
 ---
 
-<Layout title="Businnes">
+<Layout title="Businnes Directory">
   <div
-    class="lg:max-w-6xl max-w-4xl mb-10 font-bold font-heading text-center md:mb-12 md:mx-auto md:text-center"
+    class="lg:max-w-6xl max-w-4xl mb-10 text-center md:mb-12 md:mx-auto md:text-center"
   >
     <div class="lg:py-20 py-16">
-      <h1 class="font-bold font-heading text-5xl pb-20">Businesses</h1>
+      <h1 class="font-bold font-heading text-5xl pb-20">
+        Businesses Directory
+      </h1>
 
       <!-- <div class="flex flex-row pt-12 pb-6 contet">
         <h2 class="text-xl">Categories:</h2>
@@ -25,9 +27,9 @@ const Businesses = await getCollection("business");
       >
         {
           Businesses.map((business) => (
-            <div class="md:w-full w-10/12 mx-auto border-2 p-4 ">
-              <div class=" w-full flex flex-row justify-between pt-4 px-3">
-                <a href={`business/${business.slug}`}>{business.data.title}</a>
+            <div class="md:w-full w-10/12 mx-auto shadow-xl p-4 rounded-md ">
+              <div class=" w-full flex flex-row justify-between pt-4 px-3 font-bold font-heading">
+                <h1>{business.data.title}</h1>
 
                 <h2>{business.data.Category}</h2>
               </div>
@@ -41,7 +43,14 @@ const Businesses = await getCollection("business");
                 />
               </div>
 
-              <p class="">{business.data.Preview}</p>
+              <p class="text-muted pb-7">{business.data.Preview}</p>
+              <div class="flex flex-row justify-between px-3 font-bold font-heading">
+                <h2>{business.data.Address}</h2>
+                <h2>Zip Code: {business.data.Zip}</h2>
+              </div>
+              <div class="flex flex-row px-3 font-bold font-heading ">
+                <h2>Phone: {business.data.Phone}</h2>
+              </div>
             </div>
           ))
         }
