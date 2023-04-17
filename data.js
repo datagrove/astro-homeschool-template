@@ -23,8 +23,14 @@ export const headerData = {
       link: "/classifieds/",
     },
     {
+
       text: "Contact",
       link: "/contact/",
+      },
+{
+      text: "Bussinesses",
+      link: "/bussiness",
+
     },
   ],
 };
