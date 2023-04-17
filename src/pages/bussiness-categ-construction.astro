@@ -4,13 +4,12 @@ import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 let Businesses = await getCollection("bussiness");
 
-// Businesses = Astro.props;
-
+Businesses = Businesses.filter(
+  (business) => business.data.Category === "Construction"
+);
 Businesses = Businesses.sort(function (a, b) {
   return new Date(b.data.Date) - new Date(a.data.Date);
 });
-
-// const { bussinesTest = await getCollection("bussiness") } = Astro.props;
 ---
 
 <Layout title="Businnes Directory">
@@ -47,7 +46,7 @@ Businesses = Businesses.sort(function (a, b) {
         >
         <a
           class="shadow-xl px-2 py-2 rounded-xl border-2 border-black dark:border-white"
-          href="./bussiness-categ-construction">oldest</a
+          href="bussiness-categ-construction">oldest</a
         >
       </div>
 
@@ -86,7 +85,6 @@ Businesses = Businesses.sort(function (a, b) {
             </div>
           ))
         }
-        <h1></h1>
       </div>
     </div>
   </div>

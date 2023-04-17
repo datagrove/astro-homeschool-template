@@ -4,11 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 let Businesses = await getCollection("bussiness");
 
-// Businesses = Astro.props;
-
 Businesses = Businesses.sort(function (a, b) {
-  return new Date(b.data.Date) - new Date(a.data.Date);
+  return new Date(a.data.Date) - new Date(b.data.Date);
 });
+
+// Businesses = Astro.props;
 
 // const { bussinesTest = await getCollection("bussiness") } = Astro.props;
 ---
@@ -50,44 +50,44 @@ Businesses = Businesses.sort(function (a, b) {
           href="./bussiness-categ-construction">oldest</a
         >
       </div>
+    </div>
 
-      <div
-        class="grid md:grid-cols-2 lg:gap-x-40 gap-x-20 gap-y-12 grid-cols-1 mx-4"
-      >
-        {
-          Businesses.map((business) => (
-            <div class="md:w-full w-10/12 mx-auto shadow-xl p-4 rounded-md ">
-              <div class=" w-full flex flex-row justify-between pt-4 px-3 font-bold font-heading">
-                <h1>{business.data.title}</h1>
+    <div
+      class="grid md:grid-cols-2 lg:gap-x-40 gap-x-20 gap-y-12 grid-cols-1 mx-4"
+    >
+      {
+        Businesses.map((business) => (
+          <div class="md:w-full w-10/12 mx-auto shadow-xl p-4 rounded-md ">
+            <div class=" w-full flex flex-row justify-between pt-4 px-3 font-bold font-heading">
+              <h1>{business.data.title}</h1>
 
-                <h2>{business.data.Category}</h2>
-              </div>
-              <div class="flex flex-row px-3 pt-2  font-bold font-heading">
-                <h3>{business.data.Date}</h3>
-              </div>
-              <div class="w-11/12 py-7 mx-auto">
-                <Image
-                  src={business.data.Image}
-                  alt={"free image"}
-                  width={500}
-                  height={300}
-                  class="mx-auto bg-gray-500 rounded-lg shadow-lg hover:rounded-2xl"
-                />
-              </div>
-
-              <p class="text-muted pb-7">{business.data.Preview}</p>
-              <div class="flex flex-row justify-between px-3 font-bold font-heading">
-                <h2>{business.data.Address}</h2>
-                <h2>Zip Code: {business.data.Zip}</h2>
-              </div>
-              <div class="flex flex-row px-3 font-bold font-heading ">
-                <h2>Phone: {business.data.Phone}</h2>
-              </div>
+              <h2>{business.data.Category}</h2>
             </div>
-          ))
-        }
-        <h1></h1>
-      </div>
+            <div class="flex flex-row px-3 pt-2  font-bold font-heading">
+              <h3>{business.data.Date}</h3>
+            </div>
+            <div class="w-11/12 py-7 mx-auto">
+              <Image
+                src={business.data.Image}
+                alt={"free image"}
+                width={500}
+                height={300}
+                class="mx-auto bg-gray-500 rounded-lg shadow-lg hover:rounded-2xl"
+              />
+            </div>
+
+            <p class="text-muted pb-7">{business.data.Preview}</p>
+            <div class="flex flex-row justify-between px-3 font-bold font-heading">
+              <h2>{business.data.Address}</h2>
+              <h2>Zip Code: {business.data.Zip}</h2>
+            </div>
+            <div class="flex flex-row px-3 font-bold font-heading ">
+              // <h2>Phone: {business.data.Phone}</h2>
+            </div>
+          </div>
+        ))
+      }
+      <h1></h1>
     </div>
   </div>
 </Layout>

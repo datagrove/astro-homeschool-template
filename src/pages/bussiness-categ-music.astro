@@ -4,11 +4,14 @@ import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 let Businesses = await getCollection("bussiness");
 
-// Businesses = Astro.props;
+Businesses = Businesses.filter(
+  (business) => business.data.Category === "Music"
+);
 
 Businesses = Businesses.sort(function (a, b) {
   return new Date(b.data.Date) - new Date(a.data.Date);
 });
+// Businesses = Astro.props;
 
 // const { bussinesTest = await getCollection("bussiness") } = Astro.props;
 ---
@@ -50,13 +53,12 @@ Businesses = Businesses.sort(function (a, b) {
           href="./bussiness-categ-construction">oldest</a
         >
       </div>
-
       <div
         class="grid md:grid-cols-2 lg:gap-x-40 gap-x-20 gap-y-12 grid-cols-1 mx-4"
       >
         {
           Businesses.map((business) => (
-            <div class="md:w-full w-10/12 mx-auto shadow-xl p-4 rounded-md ">
+            <div class="md:w-full w-10/12 mx-auto shadow-xl p-4 rounded-3xl ">
               <div class=" w-full flex flex-row justify-between pt-4 px-3 font-bold font-heading">
                 <h1>{business.data.title}</h1>
 
