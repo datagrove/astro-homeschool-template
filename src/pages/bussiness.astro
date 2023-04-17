@@ -3,7 +3,19 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 const Businesses = await getCollection("bussiness");
+
+Businesses = Astro.props;
 ---
+
+<script>
+  function sortByCategory(Businesses) {
+    Businesses.filter();
+  }
+
+  const btnSortCategory = document.getElementById("btnSortCategory");
+
+  btnSortCategory?.addEventListener();
+</script>
 
 <Layout title="Businnes Directory">
   <div
@@ -22,6 +34,11 @@ const Businesses = await getCollection("bussiness");
           <a href="">qsy</a>
         </div>
       </div> -->
+
+      <div>
+        <button id="btnSortCategory">Sort by category</button>
+      </div>
+
       <div
         class="grid md:grid-cols-2 lg:gap-x-40 gap-x-20 gap-y-12 grid-cols-1 mx-4"
       >
