@@ -1,4 +1,3 @@
----
 export const Theme = () => {
   const btnTheme = document.getElementById("theme");
 
@@ -29,4 +28,3 @@ export const Theme = () => {
 
   ThemeCheck();
 };
----

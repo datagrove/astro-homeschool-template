@@ -5,11 +5,11 @@ const links = headerData.links;
 ---
 
 <script>
-  import { BurguerMenu } from "./BurguerMenu.astro";
+  import { BurgerMenu } from "../lib/BurgerMenu.ts";
+  import { Theme } from "../lib/Theme.ts";
 
-  import { Theme } from "./Theme.astro";
   document.addEventListener("DOMContentLoaded", Theme);
-  document.addEventListener("DOMContentLoaded", BurguerMenu);
+  document.addEventListener("DOMContentLoaded", BurgerMenu);
 </script>
 
 <header class="sticky top-0 z-20 dark:bg-black bg-white shadow-lg">
