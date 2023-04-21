@@ -2,15 +2,13 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { log } from "astro/dist/core/logger/core";
+import { dateNewestFirst } from "../../lib/date";
 
 export async function getStaticPaths({ paginate }) {
   let newsletterCollection = await getCollection("newsletter");
-  newsletterCollection = newsletterCollection.sort(function (a, b) {
-  return new Date(b.data.Date) - new Date(a.data.Date);
-});
-
+  dateNewestFirst(newsletterCollection);
   let arrayNombres = newsletterCollection.map(
-    (newsletter) => {return({ astronaut: newsletter.data},)}
+    (newsletter) => {return({ newsletterArt: newsletter.data},)}
   );
   console.log(arrayNombres ,1)
 
@@ -34,21 +32,21 @@ const { page } = Astro.props;
   <div>
 
       <ul class="flex flex-col gap-3">
-    {page.data.map(({ astronaut }) =>
+    {page.data.map(({ newsletterArt }) =>
      <li class="">
       <div class="flex flex-row gap-4 ">
         <div class="mx-auto min-w-fit p-4 flex flex-col ">
           <h3 class=" font-bold ">
-            {astronaut.Date}
+            {newsletterArt.Date}
             </h3>
 
           </div>
 
           <div class="p-3">
-            <h3 class="w-full  text-2xl px-1 pb-1 font-bold">{astronaut.title}</h3>
-            <h4 class="text-sm px-1 pb-3">{astronaut.Author}</h4>
+            <h3 class="w-full  text-2xl px-1 pb-1 font-bold">{newsletterArt.title}</h3>
+            <h4 class="text-sm px-1 pb-3">{newsletterArt.Author}</h4>
 
-            {astronaut.Preview}
+            {newsletterArt.Preview}
             <hr class=" mt-10 w-full mx-auto">
             </div>
             </div>
@@ -88,4 +86,3 @@ const { page } = Astro.props;
 
 
 
-<!--Display the current page number. Astro.params.page can also be used!-->
