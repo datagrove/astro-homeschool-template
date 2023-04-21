@@ -2,13 +2,11 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { log } from "astro/dist/core/logger/core";
+import { dateNewestFirst } from "../../lib/date";
 
 export async function getStaticPaths({ paginate }) {
   let newsletterCollection = await getCollection("newsletter");
-  newsletterCollection = newsletterCollection.sort(function (a, b) {
-  return new Date(b.data.Date) - new Date(a.data.Date);
-});
-
+  dateNewestFirst(newsletterCollection);
   let arrayNombres = newsletterCollection.map(
     (newsletter) => {return({ newsletterArt: newsletter.data},)}
   );
@@ -88,4 +86,3 @@ const { page } = Astro.props;
 
 
 
-<!--Display the current page number. Astro.params.page can also be used!-->
